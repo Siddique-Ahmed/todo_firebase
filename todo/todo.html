@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO</title>
+    <link rel="stylesheet" href="./todo.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a href="./todo.html"><h1>TODO</h1></a>
+      </div>
+      <ul class="list">
+        <li><a href="#">TODO</a></li>
+        <li><a href="#">HOW TO USE</a></li>
+        <li><a href="#">CONTACT US</a></li>
+      </ul>
+      <div class="logout_user">
+        <button id="logout">Logout</button>
+      </div>
+      <div class="user_profile"></div>
+      <i class="fa-solid fa-bars"></i>
+    </nav>
+    <section class="main_content">
+      <div class="content_box">
+        <h1>ADD YOUR DAILY TASK!</h1>
+        <p>
+          This is made by me and save your data securely and you have save your
+          daily task's and use it more time and save delete and edit your goal
+          with time and date
+        </p>
+        <button id="show_todo">ADD TASK</button>
+      </div>
+      <div class="todo_box">
+        <div class="input_box">
+          <input type="text" placeholder="add task...." id="todo_input" />
+          <button id="add_task">ADD</button>
+        </div>
+        <div class="task_box">
+          <div class="box">
+            <input type="text" id="edit_data" disabled/>
+            <div class="items">
+              <button id="edit_btn" class="fa-solid fa-pen-to-square"></button>
+              <button id="delete_btn" class="fa-solid fa-trash"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="loader"></div>
+    </section>
+
+    <script type="module" src="./todo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
