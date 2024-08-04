@@ -131,10 +131,6 @@ async function loadTodo() {
               <button id="delete_btn" class="fa-solid fa-trash"></button>
             </div>
           </div>`;
-
-    let todo_obj = {
-      todo_item: todo_input,
-    };
   });
 }
 loadTodo();
@@ -156,6 +152,9 @@ async function todoAddTask() {
   }
 
   loadTodo();
+  let todo_obj = {
+    todo_item: todo_input,
+  };
 
   try {
     const docRef = await addDoc(collection(db, "todo"), todo_obj);
