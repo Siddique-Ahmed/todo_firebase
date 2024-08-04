@@ -3,7 +3,7 @@
                                IMPORT DATA FROM FIREBASE
 ###############################################################################################
 */
-import { collection, db, auth, signOut, getDocs } from "../firebase.js";
+import { collection, db, auth, signOut, getDocs, addDoc } from "../firebase.js";
 
 /*
 ###############################################################################################
@@ -83,33 +83,61 @@ let user_profile = document.querySelector(".user_profile");
 function getUserProfile(currentUser) {
   const userEmail = currentUser.email;
 
-  getDocs(collection(db, "users")).then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      if (doc.data().user_email === userEmail) {
-        if (doc.data().img_url) {
-          let img = document.createElement("img");
-          img.src = doc.data().img_url;
-          user_profile.appendChild(img);
+  getDocs(collection(db, "users"))
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        if (doc.data().user_email === userEmail) {
+          if (doc.data().img_url) {
+            let img = document.createElement("img");
+            img.src = doc.data().img_url;
+            user_profile.appendChild(img);
+          } else {
+            console.error("No image URL found for the user");
+          }
         } else {
-          console.error("No image URL found for the user");
+          console.log("This is not the logged-in user");
         }
-      } else {
-        console.log("This is not the logged-in user");
-      }
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching user data:", error);
     });
-  }).catch((error) => {
-    console.error("Error fetching user data:", error);
-  });
 }
 
 auth.onAuthStateChanged((user) => {
   if (user) {
     getUserProfile(user);
   } else {
-    window.location.href = "../index.html"; // Redirect to login if no user is logged in
+    window.location.href = "../index.html";
   }
 });
 
+/*
+###############################################################################################
+                              LOAD TODO ITEMS
+###############################################################################################
+*/
+
+async function loadTodo() {
+  const querySnapshot = await getDocs(collection(db, "todo"));
+  querySnapshot.forEach((doc) => {
+    task_box.style.display = "flex";
+    task_box.innerHTML += `<div class="box">
+            <input type="text" id="edit_data" value="${
+              doc.data().todo_item
+            }" disabled/>
+            <div class="items">
+              <button id="edit_btn" class="fa-solid fa-pen-to-square"></button>
+              <button id="delete_btn" class="fa-solid fa-trash"></button>
+            </div>
+          </div>`;
+
+    let todo_obj = {
+      todo_item: todo_input,
+    };
+  });
+}
+loadTodo();
 
 /*
 ###############################################################################################
@@ -118,12 +146,22 @@ auth.onAuthStateChanged((user) => {
 */
 
 let add_task = document.querySelector("#add_task");
+let task_box = document.querySelector(".task_box");
 
-function todoAddTask() {
+async function todoAddTask() {
   let todo_input = document.querySelector("#todo_input").value.trim();
 
   if (todo_input === "") {
     swal.fire("please add task!");
+  }
+
+  loadTodo();
+
+  try {
+    const docRef = await addDoc(collection(db, "todo"), todo_obj);
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
   }
 }
 
@@ -131,3 +169,5 @@ add_task.addEventListener("click", (e) => {
   e.preventDefault();
   todoAddTask();
 });
+
+document.addEventListener("DOMContentLoaded",loadTodo());

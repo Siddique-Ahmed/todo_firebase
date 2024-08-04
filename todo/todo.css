@@ -182,9 +182,10 @@ nav i {
 .task_box {
   width: 100%;
   min-height: 7vh;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
+  flex-direction: column ;
   flex-wrap: wrap;
 }
 .task_box .box {
@@ -196,6 +197,7 @@ nav i {
   background: #fff;
   border-radius: 20px;
   padding: 0 8px;
+  margin: 5px 0;
 }
 .box input {
   width: 70%;
