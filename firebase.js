@@ -18,6 +18,9 @@ import {
   collection,
   addDoc,
   getDocs,
+  updateDoc,
+  doc,
+  deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -50,5 +53,8 @@ export {
   getDocs,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut
+  signOut,
+  updateDoc,
+  doc,
+  deleteDoc
 };

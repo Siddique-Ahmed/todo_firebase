@@ -104,7 +104,7 @@ nav i {
   width: 600px;
   min-height: 20vh;
   padding: 15px 20px;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -138,9 +138,9 @@ nav i {
 }
 .main_content .todo_box {
   width: 600px;
-  min-height: 40vh;
+  min-height: 14vh;
   background: rgba(0, 0, 0, 0.4);
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
@@ -199,16 +199,20 @@ nav i {
   padding: 0 8px;
   margin: 5px 0;
 }
-.box input {
+.editable-box {
   width: 70%;
   min-height: 40px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  border: none;
   outline: none;
   font-size: 20px;
   padding: 8px 11px;
+  white-space: pre-wrap; /* Preserve white spaces and wrap text */
+  overflow-wrap: break-word; /* Break long words */
+  word-break: break-word; /* Break long words */
 }
+
+
 .task_box .items {
   width: 30%;
   min-height: 40px;
@@ -236,7 +240,7 @@ nav i {
 
 .loader {
   position: absolute;
-  top: 40%;
+  top: 50%;
   width: 50px;
   aspect-ratio: 1;
   display: none;
@@ -307,5 +311,8 @@ nav i {
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 9999;
     transition: 0.3s ease-in-out;
+  }
+  .main_content{
+    padding: 150px 0 0 0 ;
   }
 }
