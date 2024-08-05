@@ -1,12 +1,5 @@
 /*
 ###############################################################################################
-                               IMPORT DATA FROM FIREBASE
-###############################################################################################
-*/
-import { collection, db, auth, signOut, getDocs, addDoc } from "../firebase.js";
-
-/*
-###############################################################################################
                                   SHOW AND HIDE TODO LIST
 ###############################################################################################
 */
@@ -17,7 +10,7 @@ let loader = document.querySelector(".loader");
 
 show_todo.addEventListener("click", (e) => {
   e.preventDefault();
-  if ((todo_box.style.display = "none")) {
+  if (todo_box.style.display === "none") {
     content_box.style.display = "none";
     loader.style.display = "grid";
     setTimeout(() => {
@@ -38,39 +31,24 @@ let logout = document.querySelector("#logout");
 
 logout.addEventListener("click", (e) => {
   e.preventDefault();
+  loader.style.display = "grid";
   signOut(auth)
     .then(() => {
-      loader.style.display = "grid";
       setTimeout(() => {
         window.location.href = "../index.html";
       }, 800);
     })
     .catch((error) => {
-      swal.fire("you have and error");
+      swal.fire("you have an error");
     });
 });
 
 /*
 ###############################################################################################
-                            HAMBURGER
+                               IMPORT DATA FROM FIREBASE
 ###############################################################################################
 */
-
-let bar = document.querySelector("nav i");
-let list = document.querySelector("nav .list");
-
-bar.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (list.style.left == "-800px") {
-    list.style.left = "0";
-    bar.classList.add("fa-xmark");
-    bar.classList.remove("fa-bar");
-  } else {
-    list.style.left = "-800px";
-    bar.classList.remove("fa-xmark");
-    bar.classList.add("fa-bar");
-  }
-});
+import { collection, db, auth, signOut, getDocs, addDoc } from "../firebase.js";
 
 /*
 ###############################################################################################
@@ -119,6 +97,7 @@ auth.onAuthStateChanged((user) => {
 */
 
 async function loadTodo() {
+  task_box.innerHTML = "";
   const querySnapshot = await getDocs(collection(db, "todo"));
   querySnapshot.forEach((doc) => {
     task_box.style.display = "flex";
@@ -133,7 +112,8 @@ async function loadTodo() {
           </div>`;
   });
 }
-loadTodo();
+
+document.addEventListener("DOMContentLoaded", loadTodo);
 
 /*
 ###############################################################################################
@@ -149,9 +129,9 @@ async function todoAddTask() {
 
   if (todo_input === "") {
     swal.fire("please add task!");
+    return;
   }
 
-  loadTodo();
   let todo_obj = {
     todo_item: todo_input,
   };
@@ -159,6 +139,7 @@ async function todoAddTask() {
   try {
     const docRef = await addDoc(collection(db, "todo"), todo_obj);
     console.log("Document written with ID: ", docRef.id);
+    await loadTodo();
   } catch (e) {
     console.error("Error adding document: ", e);
   }
@@ -168,5 +149,3 @@ add_task.addEventListener("click", (e) => {
   e.preventDefault();
   todoAddTask();
 });
-
-document.addEventListener("DOMContentLoaded",loadTodo());
