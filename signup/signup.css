@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   font-weight: 300;
 }
-body{
+body {
   width: 100%;
   min-height: 100vh;
   background: url(../img/bg.avif) center no-repeat;
@@ -17,7 +17,7 @@ body{
   justify-content: center;
   padding: 5px 10px;
 }
-.container{
+.container {
   width: 600px;
   min-height: 200px;
   background: rgba(0, 0, 0, 0.4);
@@ -29,7 +29,7 @@ body{
   padding: 10px 15px;
   position: relative;
 }
-.container h1{
+.container h1 {
   font-size: 33px;
   color: #fff;
 }
@@ -42,7 +42,7 @@ body{
   flex-wrap: wrap;
   padding: 2px 5px;
 }
-form .input_box{
+form .input_box {
   width: 45%;
   min-height: 9vh;
   display: flex;
@@ -57,7 +57,7 @@ form .input_box{
   color: #fff;
   cursor: pointer;
 }
-.input_box i{
+.input_box i {
   font-size: 17px;
   position: absolute;
   top: 45px;
@@ -65,7 +65,7 @@ form .input_box{
   cursor: pointer;
   color: #fff;
 }
-.input_box input{
+.input_box input {
   width: 100%;
   height: 40px;
   outline: none;
@@ -78,50 +78,49 @@ form .input_box{
   margin: 5px 0;
   transition: 0.3s ease-in-out;
 }
-.input_box input::placeholder{
+.input_box input::placeholder {
   color: #ccc;
 }
-input:focus{
+input:focus {
   box-shadow: 0 0 4px #ccc;
 }
-form p{
+form p {
   align-self: flex-start;
   color: #fff;
   font-size: 17px;
   margin: 3px 0;
 }
-form p a{
+form p a {
   text-decoration: none;
   color: #fff;
   font-size: 18px;
 }
-form .box{
+form .box {
   width: 100%;
   align-self: center;
   margin: 20px 5px;
 }
-.box input{
+.box input {
   display: none;
 }
-.box label{
+.box label {
   width: 80px;
   height: 80px;
   border-radius: 30px;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   align-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
-.input_box label img{
+.input_box label img {
   width: 100%;
   height: 100%;
-  border-radius: 30px;
   object-fit: cover;
   object-position: top;
-  display: none;
 }
-form .btn_box{
+form .btn_box {
   width: 100%;
   min-height: 9vh;
   display: flex;
@@ -131,7 +130,7 @@ form .btn_box{
   justify-content: space-between;
   padding: 15px 5px;
 }
-.btn_box button{
+.btn_box button {
   align-self: center;
   width: 120px;
   height: 30px;
@@ -144,7 +143,7 @@ form .btn_box{
   border-radius: 7px;
   transition: 0.3s ease-in-out;
 }
-.btn_box button:hover{
+.btn_box button:hover {
   background-color: #fff;
   color: #000;
 }
@@ -155,35 +154,47 @@ form .btn_box{
   aspect-ratio: 1;
   display: none;
   border-radius: 50%;
-  background:
-    linear-gradient(0deg ,rgba(255, 255, 255, 0.5) 30%,#fffcfc00 0 70%,rgb(255, 255, 255) 0) 50%/8% 100%,
-    linear-gradient(90deg,rgba(115, 108, 108, 0.25) 30%,#ffffff00 0 70%,rgba(188, 183, 183, 0.75) 0) 50%/100% 8%;
+  background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.5) 30%,
+        #fffcfc00 0 70%,
+        rgb(255, 255, 255) 0
+      )
+      50%/8% 100%,
+    linear-gradient(
+        90deg,
+        rgba(115, 108, 108, 0.25) 30%,
+        #ffffff00 0 70%,
+        rgba(188, 183, 183, 0.75) 0
+      )
+      50%/100% 8%;
   background-repeat: no-repeat;
   animation: l23 1s infinite steps(12);
 }
 .loader::before,
 .loader::after {
-   content: "";
-   grid-area: 1/1;
-   border-radius: 50%;
-   background: inherit;
-   opacity: 0.915;
-   transform: rotate(30deg);
+  content: "";
+  grid-area: 1/1;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.915;
+  transform: rotate(30deg);
 }
 .loader::after {
-   opacity: 0.83;
-   transform: rotate(60deg);
+  opacity: 0.83;
+  transform: rotate(60deg);
 }
 @keyframes l23 {
-  100% {transform: rotate(1turn)}
+  100% {
+    transform: rotate(1turn);
+  }
 }
 
-
 @media (max-width: 570px) {
-  form{
+  form {
     flex-direction: column;
   }
-  form .input_box{
+  form .input_box {
     width: 100%;
   }
 }

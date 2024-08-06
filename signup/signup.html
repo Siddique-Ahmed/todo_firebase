@@ -1,58 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SIGNUP</title>
-  <link rel="stylesheet" href="./signup.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-  <div class="container">
-    <h1>Signup</h1>
-    <form id="submit_data">
-      <div class="input_box box">
-        <label for="user_profile_img">
-          <img id="profile_preview" src="" alt="Profile Preview">
-        </label>
-        <input type="file" id="user_profile_img">
-      </div>
-      
-      <div class="input_box">
-        <label for="first_name">First Name</label>
-        <input type="text" id="first_name" placeholder="first name">
-      </div>
-      <div class="input_box">
-        <label for="last_name">last name</label>
-        <input type="text" id="last_name" placeholder="last name">
-      </div>
-      <div class="input_box">
-        <label for="username">username</label>
-        <input type="text" id="username" placeholder="username">
-      </div>
-      <div class="input_box">
-        <label for="user_email">Email</label>
-        <input type="email" id="user_email" placeholder="email address">
-      </div>
-      <div class="input_box">
-        <label for="user_password">Password</label>
-        <input type="password" id="user_password" placeholder="password">
-        <i id="p_eye" class="fa-solid fa-eye"></i>
-      </div>
-      <div class="input_box">
-        <label for="user_confirm_password">Confirm Password</label>
-        <input type="password" id="user_confirm_password" placeholder="confirm password">
-        <i id="c_eye" class="fa-solid fa-eye"></i>
-      </div>
-      <p>have an account  ? <a href="../index.html">Login</a></p>
-      <div class="btn_box">
-        <button type="submit">Signup</button>
-      </div>
-    </form>
-    <div class="loader"></div> 
-  </div>
-  
-  <script type="module" src="./signup.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIGNUP</title>
+    <link rel="stylesheet" href="./signup.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Signup</h1>
+      <form id="submit_data">
+        <div class="input_box box">
+          <label for="user_profile_img">
+            <img id="profile_preview" src="../img/users.png" alt="Profile Preview" />
+          </label>
+          <input type="file" id="user_profile_img" />
+        </div>
+        <div class="input_box">
+          <label for="first_name">First Name</label>
+          <input type="text" id="first_name" placeholder="first name" />
+        </div>
+        <div class="input_box">
+          <label for="last_name">last name</label>
+          <input type="text" id="last_name" placeholder="last name" />
+        </div>
+        <div class="input_box">
+          <label for="username">username</label>
+          <input type="text" id="username" placeholder="username" />
+        </div>
+        <div class="input_box">
+          <label for="user_email">Email</label>
+          <input type="email" id="user_email" placeholder="email address" />
+        </div>
+        <div class="input_box">
+          <label for="user_password">Password</label>
+          <input type="password" id="user_password" placeholder="password" />
+          <i id="p_eye" class="fa-solid fa-eye"></i>
+        </div>
+        <div class="input_box">
+          <label for="user_confirm_password">Confirm Password</label>
+          <input
+            type="password"
+            id="user_confirm_password"
+            placeholder="confirm password"
+          />
+          <i id="c_eye" class="fa-solid fa-eye"></i>
+        </div>
+        <p>have an account ? <a href="../index.html">Login</a></p>
+        <div class="btn_box">
+          <button type="submit">Signup</button>
+        </div>
+      </form>
+      <div class="loader"></div>
+    </div>
+
+    <script type="module" src="./signup.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
 </html>
