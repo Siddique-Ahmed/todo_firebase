@@ -8,7 +8,7 @@ let list = document.querySelector(".list");
 
 bar.addEventListener("click", (e) => {
   e.preventDefault();
-  if ((list.style.left === "-800px")) {
+  if (list.style.left === "-800px") {
     list.style.left = "0";
     bar.classList.add("fa-xmark");
     bar.classList.remove("fa-bar");
@@ -120,7 +120,7 @@ function getUserProfile(currentUser) {
 
 async function loadTodo(currUser) {
   task_box.innerHTML = "";
-  loader.style.display = "grid"; // Show loader before fetching data
+  loader.style.display = "grid";
 
   const querySnapshot = await getDocs(collection(db, "todo"));
   const currUserEmail = currUser.email;
@@ -248,6 +248,7 @@ auth.onAuthStateChanged((user) => {
   if (user) {
     getUserProfile(user);
     loadTodo(user);
+    window.location.href = "./todo.html";
   } else {
     window.location.href = "../index.html";
   }
