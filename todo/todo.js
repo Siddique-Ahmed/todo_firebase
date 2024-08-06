@@ -248,7 +248,6 @@ auth.onAuthStateChanged((user) => {
   if (user) {
     getUserProfile(user);
     loadTodo(user);
-    window.location.href = "./todo.html";
   } else {
     window.location.href = "../index.html";
   }

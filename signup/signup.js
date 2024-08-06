@@ -59,8 +59,23 @@ import {
 */
 let signup_btn = document.querySelector("#submit_data");
 let loader = document.querySelector(".loader");
+let pic = document.querySelector("#user_profile_img");
+let pic_label = document.querySelector(".input_box label");
+let profilePreview = document.querySelector("#profile_preview");
 
 // create user account \\
+
+pic.addEventListener("change", function () {
+  const file = pic.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      profilePreview.src = e.target.result;
+      profilePreview.style.display = "block"; // Show the image preview
+    };
+    reader.readAsDataURL(file);
+  }
+});
 
 function createUserAccount() {
   let user_profile = document.querySelector("#user_profile_img");
@@ -83,7 +98,6 @@ function createUserAccount() {
     return emailRegex.test(email);
   }
 
-  // Individual Field Validations
   if (first_name === "") {
     swal.fire("Please enter your first name");
     return;
@@ -113,9 +127,10 @@ function createUserAccount() {
     return;
   }
 
-  // Additional Validations
   if (first_name.length > 25 || first_name.length < 3) {
-    swal.fire("First name should be greater than 3 and less than 25 characters");
+    swal.fire(
+      "First name should be greater than 3 and less than 25 characters"
+    );
     return;
   }
   if (last_name.length > 25 || last_name.length < 3) {
@@ -196,7 +211,8 @@ function createUserAccount() {
 
 // eventlistener on signup button \\
 
-signup_btn.addEventListener("submit", (e) => { // Corrected event listener
+signup_btn.addEventListener("submit", (e) => {
+  // Corrected event listener
   e.preventDefault();
   createUserAccount();
 });

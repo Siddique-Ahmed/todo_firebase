@@ -109,6 +109,17 @@ form .box{
   border-radius: 30px;
   border: 1px solid #ccc;
   align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input_box label img{
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  object-fit: cover;
+  object-position: top;
+  display: none;
 }
 form .btn_box{
   width: 100%;
